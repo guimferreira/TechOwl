@@ -20,6 +20,8 @@ https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/addres
 
 No terminal
 "$" significa a linha do terminal
+em caso de duvidas:
+$ git --help
 
 $ git branch 'nome da branch'
 $ git switch 'nome da branch'
@@ -27,7 +29,12 @@ $ git status
     saída esperada "no ramo 'nome da branch'"
 $ git add .
 $ git commit -mensagem
-$ git push --set-upstream origin branch.txt
+$ git push --set-upstream origin branch.txt 
+    para a primeira vez usando essa branch, 
+    depois não é necessário, basta o $ git push
+$ git switch main
+$ git pull
+    para baixar as mudanças
 
 No github:
 
