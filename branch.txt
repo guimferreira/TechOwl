@@ -13,3 +13,16 @@ https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/propos
 
 Criar um pull request:
 https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=desktop
+
+No terminal
+"$" significa a linha do terminal
+
+$ git branch 'nome da branch'
+$ git switch 'nome da branch'
+$ git status
+    saída esperada "no ramo 'nome da branch'"
+$ git add .
+$ git commit -mensagem
+$ git push --set-upstream origin branch.txt
+
+No github:
