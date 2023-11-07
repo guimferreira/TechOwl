@@ -1,0 +1,46 @@
+* {
+    margin: 0 auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 30px;
+}
+
+main {
+    max-width: 900px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    margin: 10px 0;
+}
+
+.glossario h2 {
+    margin: 20px 0 0;
+    color: #005954;
+}
+
+.glossario p {
+    padding-right: 450px;
+    margin: 15px 0;
+}
+
+a {
+    color: #005954;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9ce0db;
+}
+
+/* #formalterar {
+    display: none;
+} */
