@@ -13,3 +13,29 @@ https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/propos
 
 Criar um pull request:
 https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=desktop
+
+Sobre conflitos de merge:
+https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts
+
+
+No terminal
+"$" significa a linha do terminal
+
+$ git branch 'nome da branch'
+$ git switch 'nome da branch'
+$ git status
+    saída esperada "no ramo 'nome da branch'"
+$ git add .
+$ git commit -mensagem
+$ git push --set-upstream origin branch.txt
+
+No github:
+
+- Abrir a branch criada
+- vai ter a seguinte mensagem:
+    "This branch is 1 commit ahead main."
+- ao lado tem a opção "contribute", nela você pode criar o pull request
+- quando eu estiver viajando, vocês podem fazer o merge na main se quiserem:
+    - abrir a aba de pull request
+    - se não tiver conflitos, clicar em "merge pull request"
+    - se tiver conflitos, ver a documentação do github sobre conflitos
