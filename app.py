@@ -16,6 +16,10 @@ definicoes = {
     "Ambiente virtual": "Um ambiente de execução isolado que permite usuários e aplicações instalarem e atualizarem pacotes Python sem interferir no comportamento de outras aplicações Python em execução no mesmo sistema.",
 }
 
+listadetarefas = []
+
+prioridades = []
+
 
 @app.route("/")
 def index():
@@ -63,9 +67,21 @@ def alterartermo(termo):
     return redirect("/glossario")
 
 
-@app.route("/tarefas")
+@app.route("/tarefas", methods=["GET", "POST"])
 def tarefas():
-    return render_template("tarefas.html")
+    if request.method == "POST":
+        tarefa = request.form['tarefa']
+        listadetarefas.append(tarefa)
+        return redirect("/tarefas")
+    else:
+        return render_template("tarefas.html", listadetarefas=listadetarefas, prioridades=prioridades)
+
+
+@app.route("/priorizar/<int:indice>")
+def priorizar(indice):
+    mover = listadetarefas.pop(indice)
+    prioridades.append(mover)
+    return redirect("/tarefas")
 
 
 if __name__ == "__main__":

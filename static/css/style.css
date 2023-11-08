@@ -37,6 +37,10 @@ a {
     text-decoration: none;
 }
 
+.tarefas {
+    display: flex;
+}
+
 a:hover {
     color: #9ce0db;
 }
