@@ -46,7 +46,7 @@ def glossario():
 
 
 @app.route("/deletar/<string:termo>")
-def deletar(termo):
+def deletartermo(termo):
     definicoes.pop(termo)
     return redirect("/glossario")
 
@@ -81,6 +81,18 @@ def tarefas():
 def priorizar(indice):
     mover = listadetarefas.pop(indice)
     prioridades.append(mover)
+    return redirect("/tarefas")
+
+
+@app.route("/del-tarefa/<int:indice>")
+def delTarefa(indice):
+    listadetarefas.pop(indice)
+    return redirect("/tarefas")
+
+
+@app.route("/del-up-tarefa/<int:indice>")
+def deletartarefa(indice):
+    prioridades.pop(indice)
     return redirect("/tarefas")
 
 
