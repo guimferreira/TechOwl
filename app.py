@@ -31,12 +31,7 @@ def glossario():
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
-        if termo == "" or definicao == "":
-            return (
-                '<h1>Os campos "termo" e "definição" precisam estar preenchidos.</h1>'
-            )
-        else:
-            definicoes[termo] = definicao
+        definicoes[termo] = definicao
         return redirect("/glossario")
     else:
         return render_template(
