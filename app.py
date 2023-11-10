@@ -31,12 +31,7 @@ def glossario():
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
-        if termo == "" or definicao == "":
-            return (
-                '<h1>Os campos "termo" e "definição" precisam estar preenchidos.</h1>'
-            )
-        else:
-            definicoes[termo] = definicao
+        definicoes[termo] = definicao
         return redirect("/glossario")
     else:
         return render_template(
@@ -46,7 +41,7 @@ def glossario():
 
 
 @app.route("/deletar/<string:termo>")
-def deletar(termo):
+def deletartermo(termo):
     definicoes.pop(termo)
     return redirect("/glossario")
 
@@ -81,6 +76,18 @@ def tarefas():
 def priorizar(indice):
     mover = listadetarefas.pop(indice)
     prioridades.append(mover)
+    return redirect("/tarefas")
+
+
+@app.route("/del-tarefa/<int:indice>")
+def delTarefa(indice):
+    listadetarefas.pop(indice)
+    return redirect("/tarefas")
+
+
+@app.route("/del-up-tarefa/<int:indice>")
+def deletartarefa(indice):
+    prioridades.pop(indice)
     return redirect("/tarefas")
 
 

@@ -24,6 +24,7 @@
     <ul>
     {% for tarefa in prioridades %}
         <li>{{ tarefa }}</li>
+        <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}">Deletar</a>
     {% endfor %}
     </ul>
     </div>
@@ -36,6 +37,7 @@
         {% for tarefa in listadetarefas %}
         <li>{{ tarefa }}</li>
         <a href="/priorizar/{{listadetarefas.index(tarefa)}}">up</a>
+        | <a href="/del-tarefa/{{listadetarefas.index(tarefa)}}">Deletar</a>
         {% endfor %}
     </ul>
     </div>
