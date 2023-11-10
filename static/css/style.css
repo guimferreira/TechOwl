@@ -67,3 +67,48 @@
     width: 70px;
 }
 
+/* Glossário */
+h1 {
+    text-align: center;
+}
+
+input {
+    margin: 10px 0;
+}
+
+.glossario h2 {
+    margin: 20px 0 0;
+    color: #005954;
+}
+
+.glossario p {
+    padding-right: 450px;
+    margin: 15px 0;
+}
+
+.abc {
+    text-transform: uppercase;
+    border: 1px solid #005954;
+    padding: 1px 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.abc:hover {
+    background-color: #005954;
+}
+
+/* Tarefas */
+
+a {
+    color: #005954;
+    text-decoration: none;
+}
+.tarefas {
+    display: flex;
+}
+
+a:hover {
+    color: #9ce0db;
+}
+

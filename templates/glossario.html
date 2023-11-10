@@ -25,10 +25,33 @@
     <input type="submit" value="Adicionar" />
   </form>
 
+  {% for letra in "abcdefghijklmnopqrstuvwxyz" %}
+  <a href="#{{letra}}" class="abc">{{letra}}</a>
+  {% endfor %}
+
+  <!-- adicionar termos -->
+  <form action="/glossario" method="POST">
+    <input
+      type="text"
+      name="termo"
+      placeholder="Termo"
+      autocomplete="off"
+      required
+    />
+    <input
+      type="text"
+      name="definicao"
+      placeholder="Definição"
+      autocomplete="off"
+      required
+    />
+    <input type="submit" value="Adicionar" />
+  </form>
+
   <div class="glossario">
     {% for termo, descricao in glossario %}
-    <h2>{{ termo }}</h2>
-    <p>{{ descricao }}</p>
+    <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
+    <p>{{descricao}}</p>
     <button id="btalterar">Editar</button>
     <form id="formalterar" action="/alterar/{{termo}}" method="POST">
       <input
