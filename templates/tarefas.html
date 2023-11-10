@@ -1,7 +1,7 @@
 {% extends 'modelo.html' %}
 
 {% block title %}
-<title>TechOwl - Tarefas</title>
+<title>Tarefas</title>
 {% endblock %}
 
 {% block body %}
@@ -9,6 +9,43 @@
 <h1>Tarefas</h1>
 </header>
 
-<a href="/">voltar</a>
+<main>
 
-{%endblock%}
+    <form action="/tarefas" method="POST">
+    <input type="text" name="tarefa" placeholder="Add uma tarefa" autocomplete="off">
+    <input type="submit" value="Adicionar">
+    </form>
+
+    <section class="tarefas">
+
+    {% if prioridades != [] %}
+    <div class="prioridades">
+    <h3>COM URGÊNCIA</h3>
+    <ul>
+    {% for tarefa in prioridades %}
+        <li>{{ tarefa }}</li>
+        <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}">Deletar</a>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    {% if listadetarefas != [] %}
+    <div class="todo">
+    <h3>TO DO LIST</h3>
+    <ul>
+        {% for tarefa in listadetarefas %}
+        <li>{{ tarefa }}</li>
+        <a href="/priorizar/{{listadetarefas.index(tarefa)}}">up</a>
+        | <a href="/del-tarefa/{{listadetarefas.index(tarefa)}}">Deletar</a>
+        {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    </section>
+
+</main>
+
+<a href="/">BACK</a>
+{% endblock %}

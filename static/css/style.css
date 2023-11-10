@@ -32,9 +32,25 @@ input {
     margin: 15px 0;
 }
 
+.abc {
+    text-transform: uppercase;
+    border: 1px solid #005954;
+    padding: 1px 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.abc:hover {
+    background-color: #005954;
+}
+
 a {
     color: #005954;
     text-decoration: none;
+}
+
+.tarefas {
+    display: flex;
 }
 
 a:hover {
