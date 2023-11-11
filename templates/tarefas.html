@@ -7,12 +7,11 @@
 
 <main>
   <form action="/tarefas" method="POST">
-    <input id="new-task"
+    <input
       type="text"
       name="tarefa"
       placeholder="Add uma tarefa"
       autocomplete="off"
-      required
     />
     <input type="submit" value="Adicionar" />
   </form>
@@ -20,7 +19,7 @@
   <section class="tarefas">
     {% if prioridades != [] %}
     <div class="prioridades">
-      <h3>&#9940; COM URGÊNCIA</h3>
+      <h3>COM URGÊNCIA</h3>
       <ul>
         {% for tarefa in prioridades %}
         <li>{{tarefa}}</li>
@@ -30,7 +29,7 @@
     </div>
     {% endif %} {% if listaDeTarefas != [] %}
     <div class="todo">
-      <h3>&#128221; TO DO LIST</h3>
+      <h3>TO DO LIST</h3>
       <ul>
         {% for tarefa in listaDeTarefas %}
         <li>{{tarefa}}</li>
