@@ -87,6 +87,13 @@ def priorizar(indice):
     return redirect("/tarefas")
 
 
+@app.route("/retirar-prioridade/<int:indice>")
+def retirarPrioridade(indice):
+    mover = prioridades.pop(indice)
+    listaDeTarefas.append(mover)
+    return redirect("/tarefas")
+
+
 @app.route("/del-tarefa/<int:indice>")
 def deletarTarefa(indice):
     listaDeTarefas.pop(indice)
@@ -103,6 +110,13 @@ def deletarTarefaPriorizada(indice):
 def editarTarefa(indice):
     novaTarefa = request.form["novatarefa"]
     listaDeTarefas[indice] = novaTarefa
+    return redirect("/tarefas")
+
+
+@app.route("/alterar-up-tarefa/<int:indice>", methods=["GET", "POST"])
+def editarTarefaPriorizada(indice):
+    novaTarefa = request.form["novatarefapriorizada"]
+    prioridades[indice] = novaTarefa
     return redirect("/tarefas")
 
 
