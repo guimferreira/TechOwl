@@ -1,19 +1,73 @@
-* {
-    margin: 0 auto;
+:root {
+    --cor-principal: #338b85;
+    --turquesa-escuro: #005954;
+    --turquesa-claro: #9ce0db;
+    --cinza-escuro: #6d6d6d;
+    --cinza-claro: #bdbdbd;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.barra-menu {
+    display: flex;
+    background-color: var(--cor-principal);
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    padding: 10px 40px;
+}
+.barra-menu nav {
+    position: relative;
+    width: 100%;
+}
+.barra-menu a {
+    color: white;
+    text-decoration: none;
+}
+.menu-lista {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    list-style: none;
+}
+.menu-links {
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    top: 10px;
+    display: block;
+    padding: 0 15px 3px;
 }
 
-body {
-    font-family: Arial, sans-serif;
+.menu-links::after {
+    content:'';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 0px;
+    height: 1.5px;
+    background: white;
+    transition: all 300ms ease-in-out;
+}
+.menu-links:hover::after {
+    left: 15%;
+    width: 70%;
+}
+.titulo-principal {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.titulo-principal img {
+    filter: invert(100%) contrast(200%) brightness(100%);
+    width: 70px;
 }
 
-header {
-    padding: 30px;
-}
-
-main {
-    max-width: 900px;
-}
-
+/* Glossário */
 h1 {
     text-align: center;
 }
@@ -44,11 +98,12 @@ input {
     background-color: #005954;
 }
 
+/* Tarefas */
+
 a {
     color: #005954;
     text-decoration: none;
 }
-
 .tarefas {
     display: flex;
 }

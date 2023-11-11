@@ -5,12 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{url_for('static', filename='css/style.css')}}"
+      href="{{ url_for('static', filename='css/style.css') }}"
     />
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
     {% block title %} {% endblock %}
   </head>
   <body>
+    <header class="barra-menu">
+      <div class="titulo-principal">
+        <a href="/"
+          ><img src="../static/imagens/coruja.png" alt="coruja de óculos"
+        /></a>
+        <h1><a href="/" class="titulo-principal">TechOwl</a></h1>
+      </div>
+      <nav>
+        <ul class="menu-lista">
+          <li><a href="/" class="menu-links">Página Inicial</a></li>
+          <li><a href="/glossario" class="menu-links">Glossário</a></li>
+          <li><a href="/tarefas" class="menu-links">Tarefas</a></li>
+          <li><a href="/sobre" class="menu-links">Sobre Nós</a></li>
+        </ul>
+      </nav>
+    </header>
     {% block body %} {% endblock %}
   </body>
 </html>
