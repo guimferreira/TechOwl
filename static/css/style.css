@@ -11,7 +11,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-
 }
 
 .barra-menu {
@@ -83,10 +82,6 @@ main {
 
 /* Glossário */
 
-#main-glossario {
-    margin-left: 80px;
-}
-
 h1 {
     text-align: center;
 }
@@ -123,44 +118,8 @@ a {
     color: #005954;
     text-decoration: none;
 }
-
-#new-task {
-
-    width: 300px;
-}
-
 .tarefas {
     display: flex;
-    justify-content: center;
-}
-
-.tarefas h3 {
-    padding: 0px;
-}
-
-ul {
-    list-style: none;
-}
-
-li {
-    display: flex;
-}
-
-.prioridades {
-    width: 600px;
-    height:fit-content;
-    padding: 20px;
-    margin-right: 100px;
-    border: 1px solid black;
-    border-radius: 20px;
-}
-
-.todo {
-    width: 600px;
-    height:fit-content;
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 20px;
 }
 
 a:hover {

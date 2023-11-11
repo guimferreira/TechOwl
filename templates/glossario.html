@@ -5,7 +5,7 @@
   <h1>Glossário</h1>
 </header>
 
-<main id="main-glossario">
+<main>
   {% for letra in "abcdefghijklmnopqrstuvwxyz" %}
   <a href="#{{letra}}" class="abc">{{letra}}</a>
   {% endfor %}
@@ -30,7 +30,7 @@
       autocomplete="off"
       required
     />
-    <input size="100"
+    <input
       type="text"
       name="definicao"
       placeholder="Definição"
