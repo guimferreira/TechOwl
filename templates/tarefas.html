@@ -23,17 +23,49 @@
       <ul>
         {% for tarefa in prioridades %}
         <li>{{tarefa}}</li>
-        <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}"><button>Deletar</button></a>
+        <a href="/retirar-prioridade/{{prioridades.index(tarefa)}}"
+          ><button>Down</button></a
+        >
+        |
+        <button class="drop-alterar">Editar</button>
+        <form
+          class="form-alterar"
+          action="/alterar-up-tarefa/{{prioridades.index(tarefa)}}"
+          method="POST"
+        >
+          <input
+            type="text"
+            name="novatarefapriorizada"
+            placeholder="Editar tarefa"
+            autocomplete="off"
+          />
+          <button type="submit">Alterar</button>
+        </form>
+        |
+        <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}"
+          ><button>Deletar</button></a
+        >
         {% endfor %}
       </ul>
     </div>
-    {% endif %} {% if listaDeTarefas != [] %}
+    {% endif %}
     <div class="todo">
+      {% if listaDeTarefas == [] and prioridades == [] %}
+      <h3>TO DO LIST</h3>
+      <p>Parabéns! Você não tem tarefas pendentes.</p>
+
+      {% elif listaDeTarefas == [] %}
+      
+      {% elif listaDeTarefas != [] %}
       <h3>TO DO LIST</h3>
       <ul>
         {% for tarefa in listaDeTarefas %}
         <li>{{tarefa}}</li>
-        <a href="/priorizar/{{listaDeTarefas.index(tarefa)}}" title="Priorizar esta tarefa"><button>Up</button></a>
+        <a
+          href="/priorizar/{{listaDeTarefas.index(tarefa)}}"
+          title="Priorizar esta tarefa"
+          ><button>Up</button></a
+        >
         |
         <button class="drop-alterar">Editar</button>
         <form
@@ -50,7 +82,9 @@
           <button type="submit">Alterar</button>
         </form>
         |
-        <a href="/del-tarefa/{{listaDeTarefas.index(tarefa)}}"><button>Deletar</button></a>
+        <a href="/del-tarefa/{{listaDeTarefas.index(tarefa)}}"
+          ><button>Deletar</button></a
+        >
         {% endfor %}
       </ul>
     </div>
