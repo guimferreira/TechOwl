@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import os
+from unidecode import unidecode
 
 app = Flask(__name__)
 
@@ -16,7 +17,7 @@ definicoes = {
     "Ambiente virtual": "Um ambiente de execução isolado que permite usuários e aplicações instalarem e atualizarem pacotes Python sem interferir no comportamento de outras aplicações Python em execução no mesmo sistema.",
 }
 
-listadetarefas = []
+listaDeTarefas = []
 
 prioridades = []
 
@@ -31,39 +32,41 @@ def glossario():
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
-        if termo == "" or definicao == "":
-            return (
-                '<h1>Os campos "termo" e "definição" precisam estar preenchidos.</h1>'
-            )
-        else:
-            definicoes[termo] = definicao
+        definicoes[termo] = definicao
         return redirect("/glossario")
     else:
-        return render_template(
-            "glossario.html",
-            glossario=sorted(definicoes.items(), key=lambda x: x[0].lower()),
-        )
+        pesquisa = request.args.get("pesquisar", "").lower()
+        pesquisa = unidecode(pesquisa)
+        if pesquisa:
+            pesquisado = {
+                termo: descricao
+                for termo, descricao in definicoes.items()
+                if pesquisa in unidecode(termo.lower())
+            }
+        else:
+            pesquisado = definicoes
+    return render_template("glossario.html", glossario=sorted(definicoes.items(), key=lambda x: x[0].lower()), pesquisado=pesquisado, pesquisa=pesquisa)
 
 
 @app.route("/deletar/<string:termo>")
-def deletartermo(termo):
+def deletarTermo(termo):
     definicoes.pop(termo)
     return redirect("/glossario")
 
 
-@app.route("/alterar/<string:termo>", methods=["GET", "POST"])
-def alterartermo(termo):
-    novotermo = request.form["novotermo"]
-    novadefinicao = request.form["novadefinicao"]
-    if novotermo == "" and novadefinicao == "":
+@app.route("/alterar-termo/<string:termo>", methods=["GET", "POST"])
+def alterarTermo(termo):
+    novoTermo = request.form["novotermo"]
+    novaDefinicao = request.form["novadefinicao"]
+    if novoTermo == "" and novaDefinicao == "":
         return redirect("/glossario")
-    elif novotermo == "":
-        definicoes[termo] = novadefinicao
-    elif novadefinicao == "":
-        definicoes.setdefault(novotermo, definicoes.pop(termo))
+    elif novoTermo == "":
+        definicoes[termo] = novaDefinicao
+    elif novaDefinicao == "":
+        definicoes.setdefault(novoTermo, definicoes.pop(termo))
     else:
-        definicoes.setdefault(novotermo, definicoes.pop(termo))
-        definicoes[novotermo] = novadefinicao
+        definicoes.setdefault(novoTermo, definicoes.pop(termo))
+        definicoes[novoTermo] = novaDefinicao
     return redirect("/glossario")
 
 
@@ -71,29 +74,41 @@ def alterartermo(termo):
 def tarefas():
     if request.method == "POST":
         tarefa = request.form['tarefa']
-        listadetarefas.append(tarefa)
+        listaDeTarefas.append(tarefa)
         return redirect("/tarefas")
     else:
-        return render_template("tarefas.html", listadetarefas=listadetarefas, prioridades=prioridades)
+        return render_template("tarefas.html", listaDeTarefas=listaDeTarefas, prioridades=prioridades)
 
 
 @app.route("/priorizar/<int:indice>")
 def priorizar(indice):
-    mover = listadetarefas.pop(indice)
+    mover = listaDeTarefas.pop(indice)
     prioridades.append(mover)
     return redirect("/tarefas")
 
 
 @app.route("/del-tarefa/<int:indice>")
-def delTarefa(indice):
-    listadetarefas.pop(indice)
+def deletarTarefa(indice):
+    listaDeTarefas.pop(indice)
     return redirect("/tarefas")
 
 
 @app.route("/del-up-tarefa/<int:indice>")
-def deletartarefa(indice):
-    prioridades.pop(indice)
+def deletarTarefaPriorizada(indice):
+    del prioridades[indice]
     return redirect("/tarefas")
+
+
+@app.route("/alterar-tarefa/<int:indice>", methods=["GET", "POST"])
+def editarTarefa(indice):
+    novaTarefa = request.form["novatarefa"]
+    listaDeTarefas[indice] = novaTarefa
+    return redirect("/tarefas")
+
+
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
 
 
 if __name__ == "__main__":

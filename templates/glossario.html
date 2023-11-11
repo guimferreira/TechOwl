@@ -1,53 +1,77 @@
-{% extends 'modelo.html' %}
-
-{% block title %}
+{% extends 'modelo.html' %} {% block title %}
 <title>Glossário</title>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 <header>
-<h1>Glossário</h1>
+  <h1>Glossário</h1>
 </header>
 
 <main>
+  {% for letra in "abcdefghijklmnopqrstuvwxyz" %}
+  <a href="#{{letra}}" class="abc">{{letra}}</a>
+  {% endfor %}
 
-{% for letra in "abcdefghijklmnopqrstuvwxyz" %}
-<a href="#{{letra}}" class="abc">{{letra}}</a>
-{% endfor %}
+  <form action="/glossario">
+    <input
+      type="text"
+      name="pesquisar"
+      placeholder="Pesquisar"
+      ,
+      autocomplete="off"
+    />
+    <button type="submit">lupa</button>
+  </form>
 
-<!-- adicionar termos -->
-<form action="/glossario" method="POST">
-    <input type="text" name="termo" placeholder="Termo" autocomplete="off" required>
-    <input type="text" name="definicao" placeholder="Definição" autocomplete="off" required>
-    <input type="submit" value="Adicionar">
-</form>
+  <!-- adicionar termos -->
+  <form action="/glossario" method="POST">
+    <input
+      type="text"
+      name="termo"
+      placeholder="Termo"
+      autocomplete="off"
+      required
+    />
+    <input
+      type="text"
+      name="definicao"
+      placeholder="Definição"
+      autocomplete="off"
+      required
+    />
+    <button type="submit">Adicionar</button>
+  </form>
 
-
-<div class="glossario">
-{% for termo, descricao in glossario %}
+  <div class="glossario">
+    {% if pesquisa %}
+    <h2>Resultados para <span>"{{pesquisa}}"</span></h2>
+    {% for termo, descricao in pesquisado.items() %}
     <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
     <p>{{descricao}}</p>
-    <button id="btalterar">Editar</button>
-    <form id="formalterar" action="/alterar/{{termo}}" method="POST">
-    <input type="text"  name="novotermo" placeholder="Editar termo" autocomplete="off"> <input type="text" name="novadefinicao" placeholder="Editar definição" autocomplete="off">
-    <input type="submit" value="Alterar">
+    |
+    <a href="/deletar/{{termo}}"><button>Deletar</button></a>
+    {% endfor %} {% else %} {% for termo, descricao in glossario %}
+    <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
+    <p>{{descricao}}</p>
+    <button class="drop-alterar">Editar</button>
+    <form class="form-alterar" action="/alterar-termo/{{termo}}" method="POST">
+      <input
+        type="text"
+        name="novotermo"
+        placeholder="Editar termo"
+        autocomplete="off"
+      />
+      <input
+        type="text"
+        name="novadefinicao"
+        placeholder="Editar definição"
+        autocomplete="off"
+      />
+      <button type="submit">Alterar</button>
     </form>
     |
     <a href="/deletar/{{termo}}"><button>Deletar</button></a>
-{% endfor %}
-
-</div>
-
+    {% endfor %} {% endif %}
+  </div>
 </main>
-
-<!-- <script>
-var botao = document.getElementById('btalterar');
-var form = document.getElementById('formalterar');
-    
-botao.addEventListener('click', function() {
-    form.style.display = 'block';
-});
-</script> -->
 
 <a href="/">BACK</a>
 {% endblock %}
