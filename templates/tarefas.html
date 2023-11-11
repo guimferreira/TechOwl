@@ -6,16 +6,6 @@
 </header>
 
 <main>
-  <form action="/tarefas" method="POST">
-    <input
-      type="text"
-      name="tarefa"
-      placeholder="Add uma tarefa"
-      autocomplete="off"
-    />
-    <input type="submit" value="Adicionar" />
-  </form>
-
   <section class="tarefas">
     {% if prioridades != [] %}
     <div class="prioridades">
@@ -51,14 +41,21 @@
     {% endif %}
     
     <div class="todo">
-      {% if listaDeTarefas == [] and prioridades == [] %}
       <h3>TO DO LIST</h3>
-      <p>Parabéns! Você não tem tarefas pendentes.</p>
+      <form action="/tarefas" method="POST">
+        <input
+          type="text"
+          name="tarefa"
+          placeholder="Add uma tarefa"
+          autocomplete="off"
+        />
+        <input type="submit" value="Adicionar" />
+      </form>
 
-      {% elif listaDeTarefas == [] %}
+      {% if listaDeTarefas == [] and prioridades == [] %}
+      <p>Parabéns! Você não tem tarefas pendentes.</p>
       
       {% else %}
-      <h3>TO DO LIST</h3>
       <ul>
         {% for tarefa in listaDeTarefas %}
         <li>{{tarefa}}</li>
