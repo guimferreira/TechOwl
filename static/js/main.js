@@ -1,9 +1,3 @@
-// addEventListener -
-// DOMContentLoaded
-// querySelectorAll - retorna uma lista de elementos (Nodelist) presente no documento que coincida com o seletor especificado
-// forEach - metódo que chama a função para cada elemento na lista
-// Element.nextElementSibling - propriedade que retorna o elemento que se encontra logo após o especificado
-
 document.addEventListener("DOMContentLoaded", function () {
   var dropForm = document.querySelectorAll(".drop-alterar");
 
