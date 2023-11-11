@@ -23,7 +23,7 @@
       <ul>
         {% for tarefa in prioridades %}
         <li>{{tarefa}}</li>
-        <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}">Deletar</a>
+        <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}"><button>Deletar</button></a>
         {% endfor %}
       </ul>
     </div>
@@ -33,7 +33,7 @@
       <ul>
         {% for tarefa in listaDeTarefas %}
         <li>{{tarefa}}</li>
-        <a href="/priorizar/{{listaDeTarefas.index(tarefa)}}">up</a>
+        <a href="/priorizar/{{listaDeTarefas.index(tarefa)}}" title="Priorizar esta tarefa"><button>Up</button></a>
         |
         <button class="drop-alterar">Editar</button>
         <form
@@ -50,7 +50,7 @@
           <button type="submit">Alterar</button>
         </form>
         |
-        <a href="/del-tarefa/{{listaDeTarefas.index(tarefa)}}">Deletar</a>
+        <a href="/del-tarefa/{{listaDeTarefas.index(tarefa)}}"><button>Deletar</button></a>
         {% endfor %}
       </ul>
     </div>
@@ -58,5 +58,4 @@
   </section>
 </main>
 
-<a href="/">BACK</a>
 {% endblock %}

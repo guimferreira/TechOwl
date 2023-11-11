@@ -5,12 +5,14 @@
     --cinza-escuro: #6d6d6d;
     --cinza-claro: #bdbdbd;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 .barra-menu {
     display: flex;
     background-color: var(--cor-principal);
@@ -19,14 +21,17 @@
     position: fixed;
     padding: 10px 40px;
 }
+
 .barra-menu nav {
     position: relative;
     width: 100%;
 }
+
 .barra-menu a {
     color: white;
     text-decoration: none;
 }
+
 .menu-lista {
     position: absolute;
     right: 20px;
@@ -34,6 +39,7 @@
     display: flex;
     list-style: none;
 }
+
 .menu-links {
     font-size: 20px;
     font-weight: 600;
@@ -53,21 +59,29 @@
     background: white;
     transition: all 300ms ease-in-out;
 }
+
 .menu-links:hover::after {
     left: 15%;
     width: 70%;
 }
+
 .titulo-principal {
     display: flex;
     align-items: center;
     gap: 5px;
 }
+
 .titulo-principal img {
     filter: invert(100%) contrast(200%) brightness(100%);
     width: 70px;
 }
 
+main {
+    padding-top: 60px;
+}
+
 /* Glossário */
+
 h1 {
     text-align: center;
 }
