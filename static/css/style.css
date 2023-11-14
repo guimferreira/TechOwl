@@ -11,6 +11,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+
 }
 
 .barra-menu {
@@ -90,6 +91,10 @@ a:hover {
 }
 
 /* Glossário */
+
+#main-glossario {
+    margin-left: 80px;
+}
 
 h1 {
     text-align: center;

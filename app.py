@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import os
-from unidecode import unidecode
+from unidecode import unidecode # ignorar ignorar acentuação e caracteres especiais
 
 app = Flask(__name__)
 
