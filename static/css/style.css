@@ -126,6 +126,10 @@ input {
     background-color: #005954;
 }
 
+.alterar-form {
+    display: none;
+}
+
 /* Tarefas */
 
 .tarefas {
@@ -133,24 +137,139 @@ input {
     justify-content: center;
 }
 
+.tarefas ul {
+    list-style: none;
+}
+
+.tarefas .tarefa {
+    width: 300px;
+}
+
+.tarefas li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.tarefas li:last-child {
+    margin-bottom: 10px;
+}
+
+.tarefas li button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.tarefas li img {
+    width: 14px;
+}
+
+#addtarefa {
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 5px;
+    margin: 20px 0 30px;
+    width: 330px;
+    height: 40px;
+    display: inline-block;
+}
+
+#addtarefa > input {
+    padding: 0 7px;
+    border: none;
+    outline: none;
+    width: 300px;
+}
+
+#addtarefa > button {
+    border: none;
+    color: var(--cor-principal);
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+#addtarefa > button:hover {
+    color: var(--turquesa-claro);
+}
+
 .todo {
-    padding: 10px;
+    width: 450px;
+    height: fit-content;
+    margin: 20px;
+}
+
+.todo h2 {
+    margin-bottom: 10px;
 }
 
 .prioridades {
-    border: 1px solid black;
-    margin-right: 20px;
-    padding: 10px;
+    width: 450px;
+    margin: 20px 70px 20px 20px;
 }
 
-ul {
-    list-style-position: inside;
+.prioridades ul {
+    height: fit-content;
+    padding: 20px 20px;
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 10px;
 }
 
-.prioridades {
-    padding-right: 20px;
+.prioridades h2 {
+    margin-bottom: 30px;
+}
+
+.botoes {
+    display: flex;
+    align-items: baseline;
+}
+
+.botoes img {
+    margin-left: 5px;
+}
+
+.botoes img:hover {
+    filter: opacity(0.4);
+}
+
+.popup-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-conteudo {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .form-alterar {
-    display: none;
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 335px;
+    height: 40px;
+    display: inline-block;
+}
+
+.form-alterar > input {
+    padding: 0 7px;
+    border: none;
+    outline: none;
+    width: 300px;
+}
+
+.form-alterar > button {
+    border: none;
+    color: var(--cor-principal);
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.2em;
 }
