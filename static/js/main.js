@@ -1,3 +1,5 @@
+// dropdown para editar
+
 document.addEventListener("DOMContentLoaded", function () {
   var dropForm = document.querySelectorAll(".drop-alterar");
 
@@ -10,5 +12,24 @@ document.addEventListener("DOMContentLoaded", function () {
         editForm.style.display = "block";
       }
     });
+  });
+});
+
+// janela pop-up para editar
+
+document.addEventListener("DOMContentLoaded", function () {
+  var alterarForm = document.querySelectorAll(".alterar-tarefa");
+
+  alterarForm.forEach(function (form) {
+    form.addEventListener("click", function () {
+      var janelaPopUp = form.nextElementSibling;
+      janelaPopUp.style.display = "flex";
+    });
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target.classList.contains("popup-bg")) {
+      event.target.style.display = "none";
+    }
   });
 });

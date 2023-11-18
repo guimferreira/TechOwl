@@ -5,67 +5,62 @@
 {% endblock %}
 
 {% block body %}
-<header>
-<h1>Sobre Nós</h1>
-</header>
+<main>
 
-<div class="card" style="width: 18rem;">
-  <img src="{{url_for('static', filename='imagens/ana_clara.jpg')}}" class="card-img-top" alt="foto-de-ana-clara">
-  <div class="card-body">
-    <h5 class="card-title">Ana Clara Barros</h5>
-    <h6 class="card-work">Dev</h6>
-    <p class="card-text">Bacharel em Psicologia pela Universidade Federal da Paraíba, atualmente estudante de Letras - Inglês na UFPB e de Sistemas para Internet na UNIESP. Cat person, filme adicta e aspirante a desenvolvedora.</p>
+<section class="sobre">
+<div class="card">
+  <img src="{{url_for('static', filename='imagens/ana_clara.jpg')}}" alt="foto-de-ana-clara">
+  <div>
+    <h4>Ana Clara Barros</h4>
+    <h5>Dev</h5>
+    <p>Bacharel em Psicologia pela Universidade Federal da Paraíba, atualmente estudante de Letras - Inglês na UFPB e de Sistemas para Internet na UNIESP. Cat person, filme adicta e aspirante a desenvolvedora.</p>
   </div>
-  <div class="card-body">
-    <a href="https://github.com/banaclara" class="card-link" target="_blank">Github</a>
-    <a href="https://www.linkedin.com/in/anaclarabs/" class="card-link" target="_blank">LinkedIn</a>
+  <div class="card-links">
+    <a href="https://github.com/banaclara" target="_blank">Github</a>
+    <a href="https://www.linkedin.com/in/anaclarabs/" target="_blank">LinkedIn</a>
   </div>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <img src="{{url_for('static', filename='imagens/clara.jpeg')}}" class="card-img-top" alt="foto-de-clara">
-  <div class="card-body">
-    <h5 class="card-title">Clara Ferraz</h5>
-    <h6 class="card-work">Dev-Git</h6>
-    <p class="card-text">Bacharel em Línguas Estrangeiras Aplicadas às Negociações Internacionais na Universidade Federal da Paraíba. Possui experiência em ensino de inglês, tradução e atendimento ao cliente. Atualmente está estudando e adquirindo habilidades em desenvolvimento de web, especialmente front-end.</p>
+<div class="card">
+  <img src="{{url_for('static', filename='imagens/clara.jpeg')}}" alt="foto-de-clara">
+  <div>
+    <h4>Clara Ferraz</h4>
+    <h5>Dev-Git</h5>
+    <p>Bacharel em Línguas Estrangeiras Aplicadas às Negociações Internacionais na Universidade Federal da Paraíba. Possui experiência em ensino de inglês, tradução e atendimento ao cliente. Estudando e adquirindo habilidades em desenvolvimento web, especialmente front-end.</p>
   </div>
-  <div class="card-body">
-    <a href="https://github.com/claraferraz" class="card-link" target="_blank">Github</a>
-    <a href="https://www.linkedin.com/in/claraferraz/" class="card-link" target="_blank">LinkedIn</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <img src="{{url_for('static', filename='imagens/guilherme.png')}}" class="card-img-top" alt="foto-de-guilherme">
-  <div class="card-body">
-    <h5 class="card-title">Guilherme Medeiros</h5>
-    <h6 class="card-work">Dev-Scrum</h6>
-    <p class="card-text">Pai e marido. Engenheiro civil tentando virar desenvolvedor. ¬Vascaíno. Criador de figurinhas para whatsapp.</p>
-  </div>
-  <div class="card-body">
-    <a href="https://github.com/guimferreira" class="card-link" target="_blank">Github</a>
-    <a href="https://www.linkedin.com/in/guilhermedmf/" class="card-link" target="_blank">LinkedIn</a>
+  <div class="card-links">
+    <a href="https://github.com/claraferraz" target="_blank">Github</a>
+    <a href="https://www.linkedin.com/in/claraferraz/" target="_blank">LinkedIn</a>
   </div>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <img src="{{url_for('static', filename='imagens/messias.png')}}" class="card-img-top" alt="foto-de-messias">
-  <div class="card-body">
-    <h5 class="card-title">Messias Batista</h5>
-    <h6 class="card-work">Teacher</h6>
-    <p class="card-text">Geeks forjados na década de 90 e que recebeu toda influência da cultura pop dos anos 90 e 2000.
-Tenho um educational background bem diverso, com formações nas áreas de tecnologias e ciências sociais.
-Adoro pesquisar, e muito disso é influência destas formações. E tive experiências trabalhando com dados, desde a primeira formação na área de humanas.
-Hoje sou profissional da área de tecnologia, atuando principalmente como profissional de dados. Minhas principais skills são da ciência de dados, mas atuo também como engenheiro de dados. A verdade é que adoro trabalhar com dados.
-Também gosto de lecionar, por isso sempre estou atuando como professor em nível de graduação e pós-graduação. Além de me disponibilizar para construir eventos de comunidade e também falar nestes eventos.
-Além de tudo isso, tenho 2 filhos maravilhosos, uma esposa que me apoia em tudo, e vários amigos que me ajudam na jornada da vida. :)</p>
+<div class="card">
+  <img src="{{url_for('static', filename='imagens/guilherme.png')}}" alt="foto-de-guilherme">
+  <div>
+    <h4>Guilherme Medeiros</h4>
+    <h5>Dev-Scrum</h5>
+    <p>Pai e marido. Engenheiro civil tentando virar desenvolvedor. ¬Vascaíno. Criador de figurinhas para whatsapp.</p>
   </div>
-  <div class="card-body">
-    <a href="https://github.com/mrafaelbatista" class="card-link" target="_blank">Github</a>
-    <a href="https://www.linkedin.com/in/messiasbatista/" class="card-link" target="_blank">LinkedIn</a>
+  <div class="card-links">
+    <a href="https://github.com/guimferreira" target="_blank">Github</a>
+    <a href="https://www.linkedin.com/in/guilhermedmf/" target="_blank">LinkedIn</a>
   </div>
 </div>
 
-<a href="/">VOLTAR</a>
+<div class="card">
+  <img src="{{url_for('static', filename='imagens/messias.png')}}" alt="foto-de-messias">
+  <div>
+    <h4>Messias Batista</h4>
+    <h5>Teacher</h5>
+    <p>Geek forjado na década de 90 com formações nas áreas de tecnologia e ciências sociais. Profissional de dados e professor. Tenho 2 filhos maravilhosos, uma esposa que me apoia em tudo, e vários amigos que me ajudam na jornada da vida.</p>
+  </div>
+  <div class="card-links">
+    <a href="https://github.com/mrafaelbatista" target="_blank">Github</a>
+    <a href="https://www.linkedin.com/in/messiasbatista/" target="_blank">LinkedIn</a>
+  </div>
+</div>
+</section>
+
+</main>
 
 {%endblock%}

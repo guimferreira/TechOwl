@@ -32,6 +32,7 @@ def glossario():
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
+        termo = termo.capitalize()
         definicoes[termo] = definicao
         return redirect("/glossario")
     else:
@@ -45,7 +46,7 @@ def glossario():
             }
         else:
             pesquisado = definicoes
-    return render_template("glossario.html", glossario=sorted(definicoes.items(), key=lambda x: x[0].lower()), pesquisado=pesquisado, pesquisa=pesquisa)
+    return render_template("glossario.html", glossario=sorted(definicoes.items()), pesquisado=pesquisado, pesquisa=pesquisa)
 
 
 @app.route("/deletar/<string:termo>")
@@ -87,6 +88,13 @@ def priorizar(indice):
     return redirect("/tarefas")
 
 
+@app.route("/retirar-prioridade/<int:indice>")
+def retirarPrioridade(indice):
+    mover = prioridades.pop(indice)
+    listaDeTarefas.append(mover)
+    return redirect("/tarefas")
+
+
 @app.route("/del-tarefa/<int:indice>")
 def deletarTarefa(indice):
     listaDeTarefas.pop(indice)
@@ -103,6 +111,13 @@ def deletarTarefaPriorizada(indice):
 def editarTarefa(indice):
     novaTarefa = request.form["novatarefa"]
     listaDeTarefas[indice] = novaTarefa
+    return redirect("/tarefas")
+
+
+@app.route("/alterar-up-tarefa/<int:indice>", methods=["GET", "POST"])
+def editarTarefaPriorizada(indice):
+    novaTarefa = request.form["novatarefapriorizada"]
+    prioridades[indice] = novaTarefa
     return redirect("/tarefas")
 
 

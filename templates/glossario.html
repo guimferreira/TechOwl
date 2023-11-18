@@ -1,15 +1,20 @@
 {% extends 'modelo.html' %} {% block title %}
 <title>Glossário</title>
 {% endblock %} {% block body %}
-<header>
-  <h1>Glossário</h1>
-</header>
 
-<main>
+<main id="main-glossario">
+
+  <h1>Glossário</h1>
+
+  <div class="procurar">
+  
+  <div class="alfabeto">
   {% for letra in "abcdefghijklmnopqrstuvwxyz" %}
   <a href="#{{letra}}" class="abc">{{letra}}</a>
   {% endfor %}
+  </div>
 
+  <div class="barra-de-pesquisa">
   <form action="/glossario">
     <input
       type="text"
@@ -18,11 +23,13 @@
       ,
       autocomplete="off"
     />
-    <button type="submit">lupa</button>
+    <button type="submit"><img src="../static/imagens/search.png" alt=""></button>
   </form>
+  </div>
+</div>
 
   <!-- adicionar termos -->
-  <form action="/glossario" method="POST">
+  <form action="/glossario" method="POST" class="add-conceitos">
     <input
       type="text"
       name="termo"
@@ -30,15 +37,16 @@
       autocomplete="off"
       required
     />
-    <input
+    <input size="40"
       type="text"
       name="definicao"
       placeholder="Definição"
       autocomplete="off"
       required
     />
-    <button type="submit">Adicionar</button>
+    <button type="submit">ADD</button>
   </form>
+  
 
   <div class="glossario">
     {% if pesquisa %}
@@ -52,7 +60,7 @@
     <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
     <p>{{descricao}}</p>
     <button class="drop-alterar">Editar</button>
-    <form class="form-alterar" action="/alterar-termo/{{termo}}" method="POST">
+    <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
       <input
         type="text"
         name="novotermo"
