@@ -32,7 +32,7 @@ def glossario():
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
-        termo = termo.capitalize()
+        termo = termo.capitalize().rstrip()
         definicoes[termo] = definicao
         return redirect("/glossario")
     else:
