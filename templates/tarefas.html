@@ -1,11 +1,9 @@
 {% extends 'modelo.html' %} {% block title %}
 <title>Tarefas</title>
 {% endblock %} {% block body %}
-<header>
-  <h1>Tarefas</h1>
-</header>
 
-<main>
+<main id="main-tarefas">
+
   <section class="tarefas">
     {% if prioridades != [] %}
     <div class="prioridades">
@@ -16,8 +14,8 @@
           <div class="tarefa">{{tarefa}}</div>
           <div class="botoes">
             <a href="/retirar-prioridade/{{prioridades.index(tarefa)}}">
-              <img src="../static/imagens/down-arrow.png" alt="" />
-            </a>
+              <button><img src="../static/imagens/down-arrow.png" alt="" />
+            </button></a>
 
             <button class="alterar-tarefa" data-target="popup">
               <img src="../static/imagens/pngwing.com.png" alt="" />
@@ -41,8 +39,8 @@
             </div>
 
             <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}">
-              <img src="../static/imagens/icon-lixo.png" alt="" />
-            </a>
+              <button><img src="../static/imagens/icon-lixo.png" alt="" />
+            </button></a>
           </div>
         </li>
         {% endfor %}

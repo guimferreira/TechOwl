@@ -4,6 +4,7 @@
     --turquesa-claro: #9ce0db;
     --cinza-escuro: #6d6d6d;
     --cinza-claro: #bdbdbd;
+    --sombra: #338b853a;
 }
 
 * {
@@ -13,6 +14,8 @@
     font-family: 'Poppins', sans-serif;
 
 }
+
+/* header */
 
 .barra-menu {
     display: flex;
@@ -77,31 +80,40 @@
     width: 70px;
 }
 
+/* main */
+
 main {
-    padding-top: 60px;
+    padding-top: 100px;
 }
 
 a {
     color: #005954;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 a:hover {
     color: #9ce0db;
 }
 
+button {
+    transition: 0.3s;
+}
+
 /* Glossário */
 
 #main-glossario {
-    margin-left: 80px;
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
+    margin: 10px;
 }
 
-input {
-    margin: 10px 0;
+.glossario {
+    width: 70%;
+    margin: 0 auto;
 }
 
 .glossario h2 {
@@ -110,20 +122,74 @@ input {
 }
 
 .glossario p {
-    padding-right: 450px;
     margin: 15px 0;
+}
+
+.procurar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px 0;
 }
 
 .abc {
     text-transform: uppercase;
-    border: 1px solid #005954;
-    padding: 1px 5px;
-    border-radius: 10px;
-    transition: 0.3s;
+    border: 1px solid var(--cor-principal);
+    padding: 2px 7px;
 }
 
 .abc:hover {
-    background-color: #005954;
+    background-color: var(--cor-principal);
+}
+
+.barra-de-pesquisa {
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.barra-de-pesquisa input {
+    border: none;
+    outline: none;
+    margin: 2px;
+}
+
+.barra-de-pesquisa button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.barra-de-pesquisa button img {
+    border: none;
+    width: 14px;
+}
+
+.barra-de-pesquisa button:hover {
+    filter: opacity(0.4);
+}
+
+.add-conceitos {
+    width: 70%;
+    margin: 30px auto;
+}
+
+.add-conceitos > input {
+    padding: 4px;
+    outline: none;
+}
+
+.add-conceitos > button {
+    border: none;
+    background-color: var(--turquesa-claro);
+    padding: 6px;
+    cursor: pointer;
+}
+
+.add-conceitos button:hover {
+    background-color: var(--turquesa-escuro);
+    color: var(--turquesa-claro);
 }
 
 .alterar-form {
@@ -169,13 +235,13 @@ input {
     border: 1px solid var(--cinza-escuro);
     border-radius: 5px;
     margin: 20px 0 30px;
-    width: 330px;
+    width: 345px;
     height: 40px;
     display: inline-block;
 }
 
 #addtarefa > input {
-    padding: 0 7px;
+    margin: 10px 8px;
     border: none;
     outline: none;
     width: 300px;
@@ -194,7 +260,7 @@ input {
 }
 
 .todo {
-    width: 450px;
+    width: 430px;
     height: fit-content;
     margin: 20px;
 }
@@ -204,7 +270,7 @@ input {
 }
 
 .prioridades {
-    width: 450px;
+    width: 430px;
     margin: 20px 70px 20px 20px;
 }
 
@@ -225,10 +291,10 @@ input {
 }
 
 .botoes img {
-    margin-left: 5px;
+    margin-left: 6px;
 }
 
-.botoes img:hover {
+.botoes button:hover {
     filter: opacity(0.4);
 }
 
@@ -254,13 +320,13 @@ input {
     border: 1px solid var(--cinza-escuro);
     border-radius: 5px;
     margin: 10px 0;
-    width: 335px;
+    width: 345px;
     height: 40px;
     display: inline-block;
 }
 
 .form-alterar > input {
-    padding: 0 7px;
+    margin: 10px 5px;
     border: none;
     outline: none;
     width: 300px;
@@ -272,4 +338,49 @@ input {
     background-color: transparent;
     cursor: pointer;
     font-size: 1.2em;
+}
+
+/* about */
+
+.sobre {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    width: 260px;
+    border: 1px solid var(--cinza-claro);
+    border-radius: 10px;
+    padding: 10px;
+    height: fit-content;
+    box-shadow: 3px 3px 10px 2px var(--sombra);
+    font-size: 0.75em;
+}
+
+.card img {
+    width: 230px;
+}
+
+.card h4 {
+    margin-top: 5px;
+}
+
+.card p {
+    margin: 5px 0 10px;
+}
+
+.card-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-links a {
+    border: 1px solid var(--cinza-claro);
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.card-links a:hover {
+    background-color: var(--sombra);
+    color: var(--turquesa-escuro);
 }

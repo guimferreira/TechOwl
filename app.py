@@ -32,6 +32,7 @@ def glossario():
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
+        termo = termo.capitalize()
         definicoes[termo] = definicao
         return redirect("/glossario")
     else:
@@ -45,7 +46,7 @@ def glossario():
             }
         else:
             pesquisado = definicoes
-    return render_template("glossario.html", glossario=sorted(definicoes.items(), key=lambda x: x[0].lower()), pesquisado=pesquisado, pesquisa=pesquisa)
+    return render_template("glossario.html", glossario=sorted(definicoes.items()), pesquisado=pesquisado, pesquisa=pesquisa)
 
 
 @app.route("/deletar/<string:termo>")
