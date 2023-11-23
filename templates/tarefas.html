@@ -2,8 +2,7 @@
 <title>Tarefas</title>
 {% endblock %} {% block body %}
 
-<main id="main-tarefas">
-
+<div id="main-tarefas">
   <section class="tarefas">
     {% if prioridades != [] %}
     <div class="prioridades">
@@ -12,17 +11,24 @@
         {% for tarefa in prioridades %}
         <li>
           <div>
-          {% if tarefa in selecionadas %}
-            <a href="/check-up/{{prioridades.index(tarefa)}}" class="checked"><img src="../static/imagens/check.png" alt="desmarcar"></a>
+            {% if tarefa in selecionadas %}
+            <a href="/check-up/{{prioridades.index(tarefa)}}" class="checked"
+              ><img src="../static/imagens/check.png" alt="desmarcar"
+            /></a>
             {% else %}
-            <a href="/check-up/{{prioridades.index(tarefa)}}" class="unchecked"><img src="../static/imagens/circle.png" alt="marcar"></a>
+            <a href="/check-up/{{prioridades.index(tarefa)}}" class="unchecked"
+              ><img src="../static/imagens/circle.png" alt="marcar"
+            /></a>
             {% endif %}
-            <span {% if tarefa in selecionadas %}class="okay"{% endif %}>{{tarefa}}</span>
-            </div>
+            <span {% if tarefa in selecionadas %}class="okay" {% endif %}
+              >{{tarefa}}</span
+            >
+          </div>
           <div class="tarefas-botoes">
             <a href="/retirar-prioridade/{{prioridades.index(tarefa)}}">
-              <button><img src="../static/imagens/down-arrow.png" alt="" />
-            </button></a>
+              <button>
+                <img src="../static/imagens/down-arrow.png" alt="" /></button
+            ></a>
 
             <button class="alterar-tarefa" data-target="popup">
               <img src="../static/imagens/pngwing.com.png" alt="" />
@@ -40,14 +46,17 @@
                     placeholder="Editar tarefa"
                     autocomplete="off"
                   />
-                  <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
+                  <button type="submit">
+                    <img src="../static/imagens/update-icon.svg" alt="update" />
+                  </button>
                 </form>
               </div>
             </div>
 
             <a href="/del-up-tarefa/{{prioridades.index(tarefa)}}">
-              <button><img src="../static/imagens/icon-lixo.png" alt="" />
-            </button></a>
+              <button>
+                <img src="../static/imagens/icon-lixo.png" alt="" /></button
+            ></a>
           </div>
         </li>
         {% endfor %}
@@ -77,11 +86,17 @@
         <li>
           <div class="tarefa">
             {% if tarefa in selecionadas %}
-            <a href="/check/{{listaDeTarefas.index(tarefa)}}" class="checked"><img src="../static/imagens/check.png" alt="desmarcar"></a>
+            <a href="/check/{{listaDeTarefas.index(tarefa)}}" class="checked"
+              ><img src="../static/imagens/check.png" alt="desmarcar"
+            /></a>
             {% else %}
-            <a href="/check/{{listaDeTarefas.index(tarefa)}}" class="unchecked"><img src="../static/imagens/circle.png" alt="marcar"></a>
+            <a href="/check/{{listaDeTarefas.index(tarefa)}}" class="unchecked"
+              ><img src="../static/imagens/circle.png" alt="marcar"
+            /></a>
             {% endif %}
-            <span {% if tarefa in selecionadas %}class="okay"{% endif %}>{{tarefa}}</span>
+            <span {% if tarefa in selecionadas %}class="okay" {% endif %}
+              >{{tarefa}}</span
+            >
           </div>
           <div class="tarefas-botoes">
             <a
@@ -122,6 +137,6 @@
     </div>
     {% endif %}
   </section>
-</main>
+</div>
 
 {% endblock %}
