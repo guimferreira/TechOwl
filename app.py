@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import os
 from unidecode import unidecode
+import json
 
 app = Flask(__name__)
 
@@ -8,18 +9,17 @@ os.environ["FLASK_DEBUG"] = "True"
 app.debug = os.environ.get("FLASK_DEBUG") == "True"
 
 
-definicoes = {
-    "Algoritmo": "Conjunto de regras e procedimentos lógicos perfeitamente definidos que levam à solução de um problema em um número finito de etapas.",
-    "CSS": "Cascading Style Sheets é uma linguagem do tipo “folha de estilo” utilizada para definir como documentos HTML são exibidos para os usuários. Com o CSS, é possível modificar os aspectos visuais de um site, incluindo fontes, cores e planos de fundo.",
-    "Git": "O GIT (rastreador global de informações) é um sistema de controle de versões (VCS) que monitora mudanças em um determinado conjunto de arquivos. Ele é usado principalmente para coordenar projetos colaborativos de software e desenvolvimento.",
-    "Pseudocódigo": "Organiza o algoritmo numa linguagem natural seguindo uma lógica computacional.",
-    "Dado": "Matéria-prima da computação, pode ser manipulado e/ou armazenado.",
-    "Função": "Uma série de instruções que retorna algum valor para um chamador. Também pode ser passado zero ou mais argumentos que podem ser usados na execução do corpo.",
-    "Método": "Uma função que é definida dentro do corpo de uma classe. Se chamada como um atributo de uma instância daquela classe, o método receberá a instância do objeto como seu primeiro argumento (que comumente é chamado de self).",
-    "Responsividade": "Responsividade é um conceito de web design que envolve criar uma experiência de usuário consistente, que se adapta a qualquer tipo de tela e dispositivo.",
-    "Scrum": "Framework para gestão e planejamento de produtos e projetos.",
-    "Ambiente virtual": "Um ambiente de execução isolado que permite usuários e aplicações instalarem e atualizarem pacotes Python sem interferir no comportamento de outras aplicações Python em execução no mesmo sistema.",
-}
+def carregar():
+    with open('dados.json', 'r', encoding='utf-8') as db:
+        conceitos = json.load(db)
+    return conceitos
+
+
+
+def salvar(conceitos):
+    with open('dados.json', 'w', encoding='utf-8') as db:
+        json.dump(conceitos, db, ensure_ascii=False, indent=4)
+
 
 listaDeTarefas = []
 
@@ -33,11 +33,14 @@ def index():
 
 @app.route("/glossario", methods=["GET", "POST"])
 def glossario():
+
+    conceitos = carregar()
     if request.method == "POST":
         termo = request.form["termo"]
         definicao = request.form["definicao"]
         termo = termo.capitalize().rstrip()
-        definicoes[termo] = definicao
+        conceitos[termo] = definicao
+        salvar(conceitos)
         return redirect("/glossario")
     else:
         pesquisa = request.args.get("pesquisar", "").lower()
@@ -45,33 +48,38 @@ def glossario():
         if pesquisa:
             pesquisado = {
                 termo: descricao
-                for termo, descricao in definicoes.items()
+                for termo, descricao in conceitos.items()
                 if pesquisa in unidecode(termo.lower())
             }
         else:
-            pesquisado = definicoes
-    return render_template("glossario.html", glossario=sorted(definicoes.items()), pesquisado=pesquisado, pesquisa=pesquisa)
+            pesquisado = conceitos
+
+    return render_template("glossario.html", glossario=sorted(conceitos.items()), pesquisado=pesquisado, pesquisa=pesquisa)
 
 
 @app.route("/deletar/<string:termo>")
 def deletarTermo(termo):
-    definicoes.pop(termo)
+    conceitos = carregar()
+    del conceitos[termo]
+    salvar(conceitos)
     return redirect("/glossario")
 
 
 @app.route("/alterar-termo/<string:termo>", methods=["GET", "POST"])
 def alterarTermo(termo):
+    conceitos = carregar()
     novoTermo = request.form["novotermo"]
     novaDefinicao = request.form["novadefinicao"]
     if novoTermo == "" and novaDefinicao == "":
         return redirect("/glossario")
     elif novoTermo == "":
-        definicoes[termo] = novaDefinicao
+        conceitos[termo] = novaDefinicao
     elif novaDefinicao == "":
-        definicoes.setdefault(novoTermo, definicoes.pop(termo))
+        conceitos.setdefault(novoTermo, conceitos.pop(termo))
     else:
-        definicoes.setdefault(novoTermo, definicoes.pop(termo))
-        definicoes[novoTermo] = novaDefinicao
+        conceitos.setdefault(novoTermo, conceitos.pop(termo))
+        conceitos[novoTermo] = novaDefinicao
+    salvar(conceitos)
     return redirect("/glossario")
 
 
