@@ -1,0 +1,7 @@
+tarefas
+glossário
+html
+css
+index
+about
+colocar o estilo dos termos no glossário em uppercase

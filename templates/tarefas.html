@@ -11,8 +11,15 @@
       <ul>
         {% for tarefa in prioridades %}
         <li>
-          <div class="tarefa">{{tarefa}}</div>
-          <div class="botoes">
+          <div>
+          {% if tarefa in selecionadas %}
+            <a href="/check-up/{{prioridades.index(tarefa)}}" class="checked"><img src="../static/imagens/check.png" alt="desmarcar"></a>
+            {% else %}
+            <a href="/check-up/{{prioridades.index(tarefa)}}" class="unchecked"><img src="../static/imagens/circle.png" alt="marcar"></a>
+            {% endif %}
+            <span {% if tarefa in selecionadas %}class="okay"{% endif %}>{{tarefa}}</span>
+            </div>
+          <div class="tarefas-botoes">
             <a href="/retirar-prioridade/{{prioridades.index(tarefa)}}">
               <button><img src="../static/imagens/down-arrow.png" alt="" />
             </button></a>
@@ -68,8 +75,15 @@
       <ul>
         {% for tarefa in listaDeTarefas %}
         <li>
-          <div class="tarefa">{{tarefa}}</div>
-          <div class="botoes">
+          <div class="tarefa">
+            {% if tarefa in selecionadas %}
+            <a href="/check/{{listaDeTarefas.index(tarefa)}}" class="checked"><img src="../static/imagens/check.png" alt="desmarcar"></a>
+            {% else %}
+            <a href="/check/{{listaDeTarefas.index(tarefa)}}" class="unchecked"><img src="../static/imagens/circle.png" alt="marcar"></a>
+            {% endif %}
+            <span {% if tarefa in selecionadas %}class="okay"{% endif %}>{{tarefa}}</span>
+          </div>
+          <div class="tarefas-botoes">
             <a
               href="/priorizar/{{listaDeTarefas.index(tarefa)}}"
               title="Priorizar esta tarefa"
@@ -92,7 +106,7 @@
                     placeholder="Editar tarefa"
                     autocomplete="off"
                   />
-                  <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
+                  <button type="submit">ADD</button>
                 </form>
               </div>
             </div>

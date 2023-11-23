@@ -1,24 +1,7 @@
-// dropdown para editar
-
-document.addEventListener("DOMContentLoaded", function () {
-  var dropForm = document.querySelectorAll(".drop-alterar");
-
-  dropForm.forEach(function (form) {
-    form.addEventListener("click", function () {
-      var editForm = this.nextElementSibling;
-      if (editForm.style.display === "block") {
-        editForm.style.display = "none";
-      } else {
-        editForm.style.display = "block";
-      }
-    });
-  });
-});
-
 // janela pop-up para editar
 
 document.addEventListener("DOMContentLoaded", function () {
-  var alterarForm = document.querySelectorAll(".alterar-tarefa");
+  var alterarForm = document.querySelectorAll(".alterar-tarefa, .alterar-conceito");
 
   alterarForm.forEach(function (form) {
     form.addEventListener("click", function () {
@@ -33,3 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// quando clica em deletar
+
+function confirmarExclusao() {
+  var confirmacao = confirm("Tem certeza que deseja excluir?");
+  document.getElementById('confirmacao').value = confirmacao ? 'true' : 'false';
+  return confirmacao;
+}

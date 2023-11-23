@@ -1,0 +1,6 @@
+tarefas
+pythonista
+python
+glossário
+html
+testes

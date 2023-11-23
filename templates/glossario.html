@@ -54,12 +54,8 @@
     {% for termo, descricao in pesquisado.items() %}
     <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
     <p>{{descricao}}</p>
-    |
-    <a href="/deletar/{{termo}}"><button>Deletar</button></a>
-    {% endfor %} {% else %} {% for termo, descricao in glossario %}
-    <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
-    <p>{{descricao}}</p>
-    <button class="drop-alterar">Editar</button>
+    <div class="glossario-botoes">
+      <button class="drop-alterar">Editar</button>
     <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
       <input
         type="text"
@@ -76,8 +72,45 @@
       <button type="submit">Alterar</button>
     </form>
     |
-    <a href="/deletar/{{termo}}"><button>Deletar</button></a>
+    <!-- <a href="/deletar/{{termo}}"><button>Deletar</button></a> -->
+
+    <form method="POST" action="/deletar/{{termo}}">
+      <input type="hidden" name="confirmacao" id="confirmacao">
+      <button type="submit" onclick="return confirmarExclusao()">Deletar</button>
+  </form>
+    </div>
+    {% endfor %} {% else %} {% for termo, descricao in glossario %}
+    <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
+    <p>{{descricao}}</p>
+    <div class="glossario-botoes">
+    <button class="alterar-conceito" data-targer="popup">Editar</button>
+    <div class="popup-bg">
+      <div class="popup-conteudo">
+    <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
+      <input
+        type="text"
+        name="novotermo"
+        placeholder="Editar termo"
+        autocomplete="off"
+      />
+      <input
+        type="text" size="35"
+        name="novadefinicao"
+        placeholder="Editar definição"
+        autocomplete="off"
+      />
+      <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
+    </form>
+    </div></div>
+    |
+    <!-- <a href="/deletar/{{termo}}"><button>Deletar</button></a> -->
+
+    <form method="POST" action="/deletar/{{termo}}">
+      <input type="hidden" name="confirmacao" id="confirmacao">
+      <button type="submit" onclick="return confirmarExclusao()">Deletar</button>
+  </form>
     {% endfor %} {% endif %}
+    </div>
   </div>
 </main>
 

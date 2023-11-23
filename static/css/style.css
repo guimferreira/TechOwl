@@ -192,10 +192,6 @@ h1 {
     color: var(--turquesa-claro);
 }
 
-.alterar-form {
-    display: none;
-}
-
 /* Tarefas */
 
 .tarefas {
@@ -209,6 +205,14 @@ h1 {
 
 .tarefas .tarefa {
     width: 300px;
+}
+
+.okay {
+    text-decoration: line-through;
+}
+
+.checked:hover, .unchecked:hover {
+    opacity: 0.4;
 }
 
 .tarefas li {
@@ -285,18 +289,20 @@ h1 {
     margin-bottom: 30px;
 }
 
-.botoes {
+.tarefas-botoes {
     display: flex;
     align-items: baseline;
 }
 
-.botoes img {
+.tarefas-botoes img {
     margin-left: 6px;
 }
 
-.botoes button:hover {
+.tarefas-botoes button:hover {
     filter: opacity(0.4);
 }
+
+/* pop ups */
 
 .popup-bg {
     display: none;
@@ -315,6 +321,8 @@ h1 {
     padding: 20px;
     border-radius: 8px;
 }
+
+/* popup tarefas */
 
 .form-alterar {
     border: 1px solid var(--cinza-escuro);
@@ -338,6 +346,32 @@ h1 {
     background-color: transparent;
     cursor: pointer;
     font-size: 1.2em;
+}
+
+/* popup glossário */
+
+.alterar-form {
+    margin: 10px 0;
+    width: 500px;
+    height: 40px;
+}
+
+.alterar-form > input {
+    padding: 5px 4px 2px;
+    outline: none;
+}
+
+.alterar-form > button {
+    border: none;
+    width: 15px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--cor-principal);
+}
+
+.alterar-form > button:hover {
+    opacity: 0.4;
 }
 
 /* about */
