@@ -2,31 +2,31 @@
 <title>Glossário</title>
 {% endblock %} {% block body %}
 
-<main id="main-glossario">
-
+<div id="main-glossario">
   <h1>Glossário</h1>
 
   <div class="procurar">
-  
-  <div class="alfabeto">
-  {% for letra in "abcdefghijklmnopqrstuvwxyz" %}
-  <a href="#{{letra}}" class="abc">{{letra}}</a>
-  {% endfor %}
-  </div>
+    <div class="alfabeto">
+      {% for letra in "abcdefghijklmnopqrstuvwxyz" %}
+      <a href="#{{letra}}" class="abc">{{letra}}</a>
+      {% endfor %}
+    </div>
 
-  <div class="barra-de-pesquisa">
-  <form action="/glossario">
-    <input
-      type="text"
-      name="pesquisar"
-      placeholder="Pesquisar"
-      ,
-      autocomplete="off"
-    />
-    <button type="submit"><img src="../static/imagens/search.png" alt=""></button>
-  </form>
+    <div class="barra-de-pesquisa">
+      <form action="/glossario">
+        <input
+          type="text"
+          name="pesquisar"
+          placeholder="Pesquisar"
+          ,
+          autocomplete="off"
+        />
+        <button type="submit">
+          <img src="../static/imagens/search.png" alt="" />
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 
   <!-- adicionar termos -->
   <form action="/glossario" method="POST" class="add-conceitos">
@@ -37,7 +37,8 @@
       autocomplete="off"
       required
     />
-    <input size="40"
+    <input
+      size="40"
       type="text"
       name="definicao"
       placeholder="Definição"
@@ -46,7 +47,6 @@
     />
     <button type="submit">ADD</button>
   </form>
-  
 
   <div class="glossario">
     {% if pesquisa %}
@@ -58,61 +58,81 @@
       <button class="alterar-conceito" data-target="popup">Editar</button>
       <div class="popup-bg">
         <div class="popup-conteudo">
-      <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
-        <input
-          type="text"
-          name="novotermo"
-          placeholder="Editar termo"
-          autocomplete="off"
-        />
-        <input
-          type="text" size="35"
-          name="novadefinicao"
-          placeholder="Editar definição"
-          autocomplete="off"
-        />
-        <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
-      </form>
-      </div></div>
-      |  
+          <form
+            class="alterar-form"
+            action="/alterar-termo/{{termo}}"
+            method="POST"
+          >
+            <input
+              type="text"
+              name="novotermo"
+              placeholder="Editar termo"
+              autocomplete="off"
+            />
+            <input
+              type="text"
+              size="35"
+              name="novadefinicao"
+              placeholder="Editar definição"
+              autocomplete="off"
+            />
+            <button type="submit">
+              <img src="../static/imagens/update-icon.svg" alt="update" />
+            </button>
+          </form>
+        </div>
+      </div>
+      |
       <form method="POST" action="/deletar/{{termo}}">
-        <input type="hidden" name="confirmacao" id="confirmacao">
-        <button type="submit" onclick="return confirmarExclusao()">Deletar</button>
-    </form>
+        <input type="hidden" name="confirmacao" id="confirmacao" />
+        <button type="submit" onclick="return confirmarExclusao()">
+          Deletar
+        </button>
+      </form>
     </div>
     {% endfor %} {% else %} {% for termo, descricao in glossario %}
     <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
     <p>{{descricao}}</p>
     <div class="glossario-botoes">
-    <button class="alterar-conceito" data-target="popup">Editar</button>
-    <div class="popup-bg">
-      <div class="popup-conteudo">
-    <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
-      <input
-        type="text"
-        name="novotermo"
-        placeholder="Editar termo"
-        autocomplete="off"
-      />
-      <input
-        type="text" size="35"
-        name="novadefinicao"
-        placeholder="Editar definição"
-        autocomplete="off"
-      />
-      <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
-    </form>
-    </div></div>
-    |
-    <!-- <a href="/deletar/{{termo}}"><button>Deletar</button></a> -->
+      <button class="alterar-conceito" data-target="popup">Editar</button>
+      <div class="popup-bg">
+        <div class="popup-conteudo">
+          <form
+            class="alterar-form"
+            action="/alterar-termo/{{termo}}"
+            method="POST"
+          >
+            <input
+              type="text"
+              name="novotermo"
+              placeholder="Editar termo"
+              autocomplete="off"
+            />
+            <input
+              type="text"
+              size="35"
+              name="novadefinicao"
+              placeholder="Editar definição"
+              autocomplete="off"
+            />
+            <button type="submit">
+              <img src="../static/imagens/update-icon.svg" alt="update" />
+            </button>
+          </form>
+        </div>
+      </div>
+      |
+      <!-- <a href="/deletar/{{termo}}"><button>Deletar</button></a> -->
 
-    <form method="POST" action="/deletar/{{termo}}">
-      <input type="hidden" name="confirmacao" id="confirmacao">
-      <button type="submit" onclick="return confirmarExclusao()">Deletar</button>
-  </form>
-    {% endfor %} {% endif %}
+      <form method="POST" action="/deletar/{{termo}}">
+        <input type="hidden" name="confirmacao" id="confirmacao" />
+        <button type="submit" onclick="return confirmarExclusao()">
+          Deletar
+        </button>
+      </form>
+      {% endfor %} {% endif %}
     </div>
   </div>
-</main>
+</div>
 
 {% endblock %}
