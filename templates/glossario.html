@@ -56,29 +56,29 @@
     <p>{{descricao}}</p>
     <div class="glossario-botoes">
       <button class="alterar-conceito" data-target="popup">Editar</button>
-    <div class="popup-bg">
-      <div class="popup-conteudo">
-    <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
-      <input
-        type="text"
-        name="novotermo"
-        placeholder="Editar termo"
-        autocomplete="off"
-      />
-      <input
-        type="text" size="35"
-        name="novadefinicao"
-        placeholder="Editar definição"
-        autocomplete="off"
-      />
-      <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
+      <div class="popup-bg">
+        <div class="popup-conteudo">
+      <form class="alterar-form" action="/alterar-termo/{{termo}}" method="POST">
+        <input
+          type="text"
+          name="novotermo"
+          placeholder="Editar termo"
+          autocomplete="off"
+        />
+        <input
+          type="text" size="35"
+          name="novadefinicao"
+          placeholder="Editar definição"
+          autocomplete="off"
+        />
+        <button type="submit"><img src="../static/imagens/update-icon.svg" alt="update"></button>
+      </form>
+      </div></div>
+      |  
+      <form method="POST" action="/deletar/{{termo}}">
+        <input type="hidden" name="confirmacao" id="confirmacao">
+        <button type="submit" onclick="return confirmarExclusao()">Deletar</button>
     </form>
-    |
-
-    <form method="POST" action="/deletar/{{termo}}">
-      <input type="hidden" name="confirmacao" id="confirmacao">
-      <button type="submit" onclick="return confirmarExclusao()">Deletar</button>
-  </form>
     </div>
     {% endfor %} {% else %} {% for termo, descricao in glossario %}
     <h2 id="{{termo[0]|lower}}">{{termo}}</h2>
