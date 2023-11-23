@@ -1,5 +1,4 @@
 tarefas
-pythonista
 python
 glossário
 html

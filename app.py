@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect
 import os
 from unidecode import unidecode
 import json
 
 app = Flask(__name__)
-app.secret_key = 'techowl'
 
 os.environ["FLASK_DEBUG"] = "True"
 app.debug = os.environ.get("FLASK_DEBUG") == "True"
@@ -44,7 +43,7 @@ selecionadas = carregarTarefas('tarefasfeitas.txt')
 
 @app.route("/")
 def index():
-    
+
     return render_template("index.html")
 
 
