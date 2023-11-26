@@ -420,3 +420,48 @@ h1 {
     background-color: var(--sombra);
     color: var(--turquesa-escuro);
 }
+
+/* Página index.html */
+
+.botao-index {
+    align-items: center;
+    background: #FFF;
+    border-radius: 30px;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.50);
+    display: flex;
+    height: 190px;
+    margin: 20px auto 20px;
+    padding: 0 60px;
+    width: 1200px;
+}
+
+.botao-index div {
+    margin-right: 75px;
+    width: 200px;
+}
+
+.botao-index h2 {
+    color: #000;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.botao-index img {
+    height: 90px;
+    width: 90px;
+}
+
+.botao-index p {
+    color: #000;
+    font-size: 22px;
+    font-weight: 400;
+    text-align: justify;
+    width: 805px;
+}
+
+span {
+    color: var(--turquesa-escuro);
+    font-size: 120%;
+    font-weight: 700;
+}
